@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shadow Tail</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="game-shell">
+      <section class="stage" aria-label="Shadow Tail game">
+        <canvas id="game" width="1280" height="720"></canvas>
+        <div class="hud" aria-hidden="true">
+          <div class="meter-block">
+            <span>DIST</span>
+            <div class="meter"><i id="distanceMeter"></i></div>
+          </div>
+          <div class="meter-block">
+            <span>ALERT</span>
+            <div class="meter danger"><i id="alertMeter"></i></div>
+          </div>
+          <div class="status-line">
+            <strong id="stateLabel">TAILING</strong>
+            <span id="hintLabel">Move with WASD / Arrows. Hide with Space.</span>
+          </div>
+        </div>
+        <div id="overlay" class="overlay visible">
+          <h1>Shadow Tail</h1>
+          <p>Target a safe distance, slip behind cover, and stay unseen when the mark turns around.</p>
+          <button id="startButton" type="button">Start Mission</button>
+        </div>
+      </section>
+    </main>
+    <script src="./src/main.js"></script>
+  </body>
+</html>
