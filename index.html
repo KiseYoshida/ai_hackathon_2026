@@ -10,6 +10,7 @@
     <main class="game-shell">
       <section class="stage" aria-label="Shadow Tail game">
         <canvas id="game" width="1280" height="720"></canvas>
+        <div class="reticle" aria-hidden="true"></div>
         <div class="hud" aria-hidden="true">
           <div class="meter-block">
             <span>DIST</span>
@@ -18,6 +19,10 @@
           <div class="meter-block">
             <span>ALERT</span>
             <div class="meter danger"><i id="alertMeter"></i></div>
+          </div>
+          <div class="meter-block item-readout">
+            <span>ITEMS</span>
+            <strong id="itemLabel">0 / 4</strong>
           </div>
           <div class="status-line">
             <strong id="stateLabel">TAILING</strong>

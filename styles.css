@@ -45,6 +45,32 @@ button {
   box-shadow: 0 24px 70px rgba(0, 0, 0, 0.45);
 }
 
+.stage::before,
+.stage::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  pointer-events: none;
+}
+
+.stage::before {
+  z-index: 2;
+  background:
+    radial-gradient(circle at 50% 45%, transparent 0%, transparent 48%, rgba(0, 0, 0, 0.28) 76%, rgba(0, 0, 0, 0.66) 100%),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.34), transparent 16%, transparent 84%, rgba(0, 0, 0, 0.34));
+}
+
+.stage::after {
+  z-index: 3;
+  opacity: 0.18;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent 0,
+    transparent 3px,
+    rgba(245, 241, 223, 0.12) 4px
+  );
+}
+
 canvas {
   display: block;
   width: 100%;
@@ -52,13 +78,48 @@ canvas {
   image-rendering: auto;
 }
 
+.reticle {
+  position: absolute;
+  z-index: 4;
+  top: 50%;
+  left: 50%;
+  width: 54px;
+  height: 54px;
+  border: 1px solid rgba(247, 208, 95, 0.38);
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}
+
+.reticle::before,
+.reticle::after {
+  position: absolute;
+  content: "";
+  background: rgba(247, 208, 95, 0.48);
+}
+
+.reticle::before {
+  top: 50%;
+  left: 9px;
+  width: 36px;
+  height: 1px;
+}
+
+.reticle::after {
+  top: 9px;
+  left: 50%;
+  width: 1px;
+  height: 36px;
+}
+
 .hud {
   position: absolute;
-  inset: 18px 18px auto 18px;
+  z-index: 5;
+  inset: auto 18px 18px 18px;
   display: grid;
-  grid-template-columns: minmax(120px, 220px) minmax(120px, 220px) 1fr;
+  grid-template-columns: minmax(120px, 180px) minmax(120px, 180px) minmax(90px, 110px) minmax(220px, 1fr);
   gap: 12px;
-  align-items: start;
+  align-items: end;
   pointer-events: none;
 }
 
@@ -66,8 +127,8 @@ canvas {
 .status-line {
   min-height: 48px;
   border: 1px solid rgba(245, 241, 223, 0.22);
-  border-radius: 6px;
-  background: rgba(19, 20, 17, 0.72);
+  border-radius: 4px;
+  background: rgba(11, 14, 13, 0.68);
   backdrop-filter: blur(8px);
 }
 
@@ -78,11 +139,21 @@ canvas {
 }
 
 .meter-block span,
+.meter-block strong,
 .status-line strong {
   color: #f7d05f;
   font-size: 12px;
   font-weight: 800;
   letter-spacing: 0;
+}
+
+.item-readout {
+  align-content: center;
+}
+
+.item-readout strong {
+  font-size: 20px;
+  line-height: 1;
 }
 
 .meter {
@@ -110,9 +181,10 @@ canvas {
   display: flex;
   min-width: 0;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   gap: 12px;
   padding: 10px 12px;
+  text-align: center;
 }
 
 .status-line span {
@@ -126,6 +198,7 @@ canvas {
 
 .overlay {
   position: absolute;
+  z-index: 6;
   inset: 0;
   display: none;
   place-items: center;
@@ -185,7 +258,7 @@ canvas {
 
   .hud {
     inset: 10px 10px auto 10px;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 0.7fr;
   }
 
   .status-line {
