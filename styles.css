@@ -212,6 +212,12 @@ canvas {
   display: grid;
 }
 
+.overlay-content {
+  display: grid;
+  justify-items: center;
+  max-width: 820px;
+}
+
 .overlay h1 {
   margin: 0;
   color: #f7d05f;
@@ -221,12 +227,47 @@ canvas {
   text-transform: uppercase;
 }
 
+.overlay h2 {
+  margin: 0 0 8px;
+  color: #61d394;
+  font-size: 14px;
+}
+
 .overlay p {
   max-width: 620px;
   margin: 18px auto 24px;
   color: rgba(245, 241, 223, 0.9);
   font-size: clamp(15px, 2vw, 19px);
   line-height: 1.6;
+}
+
+.start-guide {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  width: 100%;
+  margin: 4px 0 24px;
+  text-align: left;
+}
+
+.start-guide section {
+  min-height: 132px;
+  border: 1px solid rgba(245, 241, 223, 0.2);
+  border-radius: 6px;
+  padding: 14px;
+  background: rgba(11, 14, 13, 0.72);
+}
+
+.start-guide p,
+.start-guide ul {
+  margin: 0;
+  color: rgba(245, 241, 223, 0.9);
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.start-guide ul {
+  padding-left: 18px;
 }
 
 .overlay button {
@@ -263,5 +304,9 @@ canvas {
 
   .status-line {
     grid-column: 1 / -1;
+  }
+
+  .start-guide {
+    grid-template-columns: 1fr;
   }
 }

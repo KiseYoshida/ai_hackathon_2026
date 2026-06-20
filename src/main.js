@@ -6,6 +6,7 @@ const itemLabel = document.getElementById("itemLabel");
 const stateLabel = document.getElementById("stateLabel");
 const hintLabel = document.getElementById("hintLabel");
 const overlay = document.getElementById("overlay");
+const startGuide = document.getElementById("startGuide");
 const startButton = document.getElementById("startButton");
 
 const keys = new Set();
@@ -236,7 +237,7 @@ function update(dt) {
     state.message = "Keep the target in range.";
   }
 
-  if (state.alert >= 1) endGame(false, "CAUGHT", "The target noticed you.");
+  if (state.alert >= 1) endGame(false, "発見", "尾行対象に気づかれてしまいました。");
   if (state.itemsCollected >= state.requiredItems) endGame(true, "CLEAR", buildInvestigationResult());
 
   moveWorldObjects(worldDelta);
@@ -271,12 +272,12 @@ function updateTargetBehavior(dt) {
   }
 
   const speedByAction = {
-    walking: 46,
-    paused: 8,
-    drifting: 38,
-    hurrying: 72,
+    walking: 62,
+    paused: 14,
+    drifting: 52,
+    hurrying: 96,
   };
-  const culpritSpeedMultiplier = state.targetIsCulprit ? 1.35 : 1;
+  const culpritSpeedMultiplier = state.targetIsCulprit ? 1.7 : 1;
   const targetActionSpeed = speedByAction[state.targetAction] * culpritSpeedMultiplier;
   state.targetSpeed += (targetActionSpeed - state.targetSpeed) * Math.min(1, dt * 3.8);
   state.targetX += (state.targetGoalX - state.targetX) * Math.min(1, dt * 2.4);
@@ -407,9 +408,10 @@ function endGame(success, label, message) {
   state.running = false;
   stateLabel.textContent = label;
   hintLabel.textContent = message;
-  overlay.querySelector("h1").textContent = success ? "Mission Clear" : "Exposed";
+  overlay.querySelector("h1").textContent = success ? "ミッションクリア" : "尾行失敗";
   overlay.querySelector("p").textContent = message;
-  startButton.textContent = "Retry";
+  startGuide.style.display = "none";
+  startButton.textContent = "もう一度プレイ";
   overlay.classList.add("visible");
 }
 

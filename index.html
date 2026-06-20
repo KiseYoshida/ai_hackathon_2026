@@ -30,9 +30,30 @@
           </div>
         </div>
         <div id="overlay" class="overlay visible">
-          <h1>Shadow Tail</h1>
-          <p>Target a safe distance, slip behind cover, and stay unseen when the mark turns around.</p>
-          <button id="startButton" type="button">Start Mission</button>
+          <div class="overlay-content">
+            <h1>Shadow Tail</h1>
+            <p>尾行対象を追跡し、落としたアイテムをすべて回収してください。</p>
+            <div id="startGuide" class="start-guide">
+              <section>
+                <h2>目的</h2>
+                <p>4つの落とし物を回収するとクリアです。終了後、集めた証拠から対象が犯人だったかどうかを判定します。</p>
+              </section>
+              <section>
+                <h2>操作</h2>
+                <ul>
+                  <li>W / ↑: 前進</li>
+                  <li>S / ↓: 後退</li>
+                  <li>A / ←・D / →: 左右移動</li>
+                  <li>Space: 遮蔽物の近くで隠れる</li>
+                </ul>
+              </section>
+              <section>
+                <h2>ルール</h2>
+                <p>対象が振り返ったら、遮蔽物に隠れるか視線を遮ってください。近づきすぎ・離れすぎ・見られ続けると警戒ゲージが上がります。</p>
+              </section>
+            </div>
+            <button id="startButton" type="button">ミッション開始</button>
+          </div>
         </div>
       </section>
     </main>
