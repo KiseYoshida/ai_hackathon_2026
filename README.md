@@ -2,6 +2,10 @@
 
 一人称視点風の尾行ゲームです。
 
+## 公開URL
+
+GitHub Pages: https://kiseyoshida.github.io/shadow_tail/
+
 ## 制作背景
 
 この作品は、[全日本AIハッカソン 2026](https://www.aifestival.jp/hackathon) の 4th ステージのテーマ「名探偵」に向けて作成したゲームです。
